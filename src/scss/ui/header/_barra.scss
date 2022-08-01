@@ -1,0 +1,23 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.barra {
+    display: none; // dispositivo pequeño no se muestra
+    @include m.tablet {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__nombre {
+        color: v.$blanco;
+    }
+    &__navegacion {
+        @include m.tablet {
+            display: flex;
+            gap: 4rem;
+        }
+    }
+    &__link {
+        color: v.$blanco;
+    }
+}

@@ -1,0 +1,55 @@
+@use 'variables' as v; 
+
+/** Media Queries **/
+@mixin telefono {
+    @media (min-width: v.$telefono) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: v.$tablet) {
+        @content;
+    }
+}
+  
+@mixin desktop {
+    @media (min-width: v.$desktop) {
+        @content;
+    }
+}
+
+
+@mixin boton($bgColor, $colorTexto) {
+    background-color: $bgColor;
+    padding: 2rem 4rem;
+    color: $colorTexto;
+    margin-top: 1rem;
+    border-radius: 3rem;
+    font-size: 2rem;
+    font-weight: 700;
+    display: block;
+
+    @include tablet {
+        display: inline-block;
+    }
+}
+
+@mixin grid($columnas, $espaciado ) {
+    display: grid;
+    gap: $espaciado;
+    grid-template-columns: repeat($columnas, 1fr);
+}
+@mixin scrollHorizontal {// declaramos en el padre ACORDARSE DE CREAR EL GRID CADA ELEMENTO UN TAMAÑO FIJO, NO CON FR
+    
+    overflow-y: hidden; //ocultamos todo lo que sobrepasa de esta seccion para arriba y abajo
+
+    overflow-x: scroll; //asignamos scroll a los laterales
+
+    scroll-snap-type: x mandatory; // decimos que los laterales mandan en el scroll
+
+    > * { // al primer hijo, todos los primeros hijps o elementos
+
+        scroll-snap-align: center; // el scroll se ubica al centro de cada elemento este caso es cada lugar
+    }
+}
